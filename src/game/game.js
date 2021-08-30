@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Phaser from "phaser";
+import { WebFontLoaderPlugin } from "phaser3-webfont-loader";
 import { IonPhaser } from "@ion-phaser/react";
 import FirstGame from "./scene/FirstGame";
 import Dunsparce from "./scene/Dunsparce";
@@ -19,6 +20,15 @@ class Game extends Component {
                 },
             },
             scene: [Dunsparce],
+            plugins: {
+                global: [
+                    {
+                        key: "WebFontLoader",
+                        plugin: WebFontLoaderPlugin,
+                        start: true,
+                    },
+                ],
+            },
         },
     };
 

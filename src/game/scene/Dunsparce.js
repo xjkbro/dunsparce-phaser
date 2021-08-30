@@ -43,10 +43,12 @@ export default class Dunsparce extends Phaser.Scene {
             frameWidth: 72,
             frameHeight: 32,
         });
-        // this.load.audio("flap", "sounds/sfx_wing.ogg");
-        // this.load.audio("hit", "sounds/sfx_hit.ogg");
-        // this.load.audio("die", "sounds/sfx_die.ogg");
-        // this.load.audio("score", "sounds/sfx_point.ogg");
+        this.load.audio("flap", "sounds/wing.ogg");
+        this.load.audio("hit", "sounds/dunsparce_cry.ogg");
+        this.load.audio("die", "sounds/die.ogg");
+        this.load.audio("score", "sounds/point.ogg");
+
+        this.load.webfont("ElfboyClassic", "fonts/Elfboyclassic-PKZgZ.ttf");
     }
     create() {
         // initialize properties that require values on new creation
@@ -54,6 +56,7 @@ export default class Dunsparce extends Phaser.Scene {
         this.countPipe = 0;
         this.isPaused = true;
         this.gameOver = false;
+        this.sound.setVolume(0.1);
 
         // start by placing assets to the canvas and the player
         this.createBackground();
@@ -63,7 +66,7 @@ export default class Dunsparce extends Phaser.Scene {
 
         this.pipes = this.initialPipes();
         this.scoreText = this.add.text(20, 20, this.score, {
-            fontFamily: "Nunito",
+            fontFamily: "ElfboyClassic",
             fontSize: 60,
             color: "#fff",
         });
@@ -72,6 +75,8 @@ export default class Dunsparce extends Phaser.Scene {
 
         this.cursors = this.input.keyboard.createCursorKeys();
         this.player.body.setGravityY(300);
+        this.player.body.setSize(35, 15);
+        this.player.setScale(0.7);
         this.physics.add.existing(this.ground, true);
         this.physics.add.collider(
             this.player,
@@ -114,7 +119,7 @@ export default class Dunsparce extends Phaser.Scene {
                 this.isPaused = false;
                 this.message.visible = false;
             }
-            // this.sound.play("flap");
+            this.sound.play("flap");
             this.player.setVelocityY(BIRD_VELOCITY);
             this.player.anims.play(FLAP, true);
             this.player.angle = -FLAP_ANGLE;
@@ -173,7 +178,7 @@ export default class Dunsparce extends Phaser.Scene {
                     this.score += 0.5;
                     this.scoreText.setText(this.score);
                     console.log("score:", this.score);
-                    // this.sound.play("score");
+                    this.sound.play("score");
                 }
             }
         });
@@ -182,15 +187,15 @@ export default class Dunsparce extends Phaser.Scene {
         const platforms = this.physics.add.staticGroup();
         const { width, height } = this.scale;
         platforms
-            .create(width * 0.2, height * 0.6, BACKGROUND)
+            .create(width * 0.2, height * 0.59, BACKGROUND)
             .setScale(1.4)
             .refreshBody();
         platforms
-            .create(width * 0.4, height * 0.6, BACKGROUND)
+            .create(width * 0.4, height * 0.59, BACKGROUND)
             .setScale(1.4)
             .refreshBody();
         platforms
-            .create(width * 0.8, height * 0.6, BACKGROUND)
+            .create(width * 0.8, height * 0.59, BACKGROUND)
             .setScale(1.4)
             .refreshBody();
         return platforms;
@@ -256,6 +261,7 @@ export default class Dunsparce extends Phaser.Scene {
 
     collision(player) {
         console.log("sss");
+        this.sound.play("hit");
         this.gameIsOver(player);
     }
     gameIsOver(player) {
