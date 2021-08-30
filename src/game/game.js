@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Phaser from "phaser";
 import { IonPhaser } from "@ion-phaser/react";
 import FirstGame from "./scene/FirstGame";
+import Dunsparce from "./scene/Dunsparce";
 
 class Game extends Component {
-    FirstGameState = {
+    state = {
         initialize: true,
         game: {
             type: Phaser.AUTO,
@@ -17,7 +18,7 @@ class Game extends Component {
                     gravity: { y: 200 },
                 },
             },
-            scene: FirstGame,
+            scene: [Dunsparce],
         },
     };
 
@@ -25,8 +26,8 @@ class Game extends Component {
         return (
             <>
                 <IonPhaser
-                    game={this.FirstGameState.game}
-                    initialize={this.FirstGameState.initialize}
+                    game={this.state.game}
+                    initialize={this.state.initialize}
                 />
             </>
         );
