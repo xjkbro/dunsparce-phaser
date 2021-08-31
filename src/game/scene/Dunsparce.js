@@ -168,7 +168,6 @@ export default class Dunsparce extends Phaser.Scene {
                     child.drawn = true;
                     if (this.countPipe >= 2) {
                         let randoPos = this.randomPipes();
-                        console.log("Create Pipe Set");
                         this.pipes
                             .create(gameWidth + deltaX, randoPos[0], "pipe")
                             .setScale(1)
@@ -218,13 +217,13 @@ export default class Dunsparce extends Phaser.Scene {
         return platforms;
     }
     initialPipes() {
-        let platforms = this.physics.add.staticGroup();
+        let pipes = this.physics.add.staticGroup();
         var pipePos = gameWidth + 2 * deltaX;
         let pos = this.randomPipes();
         // bottom placable at 260+pipeGap to height
-        platforms.create(pipePos, pos[0], "pipe").setScale(1).refreshBody();
-        platforms.create(pipePos, pos[1], "pipe").setScale(1, -1).refreshBody();
-        return platforms;
+        pipes.create(pipePos, pos[0], "pipe").setScale(1).refreshBody();
+        pipes.create(pipePos, pos[1], "pipe").setScale(1, -1).refreshBody();
+        return pipes;
     }
     createGround() {
         const { width, height } = this.scale;

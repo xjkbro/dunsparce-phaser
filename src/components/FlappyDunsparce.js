@@ -16,7 +16,7 @@ export default function FlappyDunsparce({ playGame, setPlayGame }) {
                     className="btn btn-light pixel-font mx-auto text-center"
                     onClick={() => setPlayGame(true)}
                 >
-                    PlayGame
+                    Play The Game
                 </button>
             ) : (
                 <></>
