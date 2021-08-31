@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+<div align="center">
+  <br>
+  <a href="https://dunsparce-phaser.vercel.app/"><img src="./public/logo.png" alt="Flappy Dunsparce" ></a>
+<h4 align="center">A FlappyBird remodel with the cute and adorable Pokemon, Dunsparce.</h4>
+<p align="center">
+  <a href="#about-the-game">About</a> •
+  <a href="#gameplay">Gameplay</a> •
+  <a href="#how-to-use">How To Use</a> •
+  <a href="#the-developer">The Developer</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#you-may-also-like">Others</a> •
+  <a href="#license">License</a>
+</p>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **About the Game**
 
-## Available Scripts
+This is a game I built for Mintbean's August 2021 Hiring Hackathon Event. I primarily used PhaserJS, React, Bootstrap to build the entire landing page and game. This was my first attempt at creating a game and I am pretty proud of what I had accomplished in the short time I had to do this. This game is essentially a FlappyBird remake and remodel. The assets we're model and created based off the orignal game assets and was done by me. The audio assets were found online that I believe were from the original game as well.
 
-In the project directory, you can run:
+## **Gameplay**
 
-### `npm start`
+<!-- ![](./public/snapshot.png) -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![gameplay](./public/assets/Animation.gif)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How To Use
 
-### `npm test`
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+# Clone this repository
+$ git clone https://github.com/xjkbro/dunsparce-phaser
 
-### `npm run build`
+# Go into the repository
+$ cd dunsparce-phaser
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Install dependencies
+$ npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Run the app
+$ npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Note: If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
-### `npm run eject`
+## **The Developer**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Flappy Dunsparce was create by Jason-Kyle De Lara
+If your enjoyed the application feel free to visit my website and look at my other projects.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+[GitHub](https://github.com/xjkbro)
+[LinkedIn](https://www.linkedin.com/in/jkdelara/)
+[Website](https://www.jkdelara.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Credits
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This project uses the following packages:
 
-## Learn More
+-   [React](https://reactjs.org/)
+-   [Phaser3](https://www.phaser.io/phaser3)
+-   [IonPhaser](https://www.npmjs.com/package/@ion-phaser/react)
+-   [Bootstrap](https://getbootstrap.com/)
+-   [ReactStrap](https://reactstrap.github.io/) (For utility components)
+-   [MaterialUI](https://material-ui.com/) (For Icons)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## You may also like...
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+-   [DevFlow](https://github.com/xjkbro/devflow) - Web Development blog
+-   [CanGrid](https://github.com/xjkbro/galleryio-next) - Social Media Platform
 
-### Code Splitting
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT

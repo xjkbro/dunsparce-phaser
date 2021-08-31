@@ -15,11 +15,12 @@
 .section {
     margin: auto;
     width: 80vw;
-    padding-bottom: 12rem;
+    padding-bottom: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     color: white;
+    padding-top: 2rem;
 }
 .navbar-toggler {
     background-color: white !important;
@@ -40,19 +41,21 @@
     padding-bottom: 2rem;
 }
 .snapshot {
-    width: 50vw;
+    width: 80vw;
     margin: auto;
 }
 .team-content {
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 .card-team {
-    width: 25%;
+    width: 100%;
+    padding-bottom: 10px;
 }
 .info-team {
-    width: 65%;
+    width: 100%;
 }
 
 .line {
@@ -67,6 +70,25 @@
     );
     background-size: 1000% 1000%;
 }
+@media screen and (min-width: 800px) {
+    .team-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .card-team {
+        width: 25%;
+    }
+    .info-team {
+        width: 65%;
+    }
+    .snapshot {
+        width: 50vw;
+        margin: auto;
+    }
+}
+
 @keyframes animateBg {
     0% {
         background-position: 0% 0%;

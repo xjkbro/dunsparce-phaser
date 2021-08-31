@@ -4,10 +4,11 @@ import NavBar from "./components/NavBar";
 import FlappyDunsparce from "./components/FlappyDunsparce";
 import HowToPlay from "./components/HowToPlay";
 import Controls from "./components/Controls";
-import MeetTheTeam from "./components/MeetTheTeam";
+import MeetTheDev from "./components/MeetTheDev";
 import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import Thoughts from "./components/Thoughts";
+import Hero from "./components/Hero";
 
 function App() {
     const [playGame, setPlayGame] = useState(false);
@@ -16,6 +17,7 @@ function App() {
             <div className="App">
                 <div className="line" />
                 <NavBar />
+                <Hero />
                 <FlappyDunsparce
                     playGame={playGame}
                     setPlayGame={setPlayGame}
@@ -23,7 +25,7 @@ function App() {
                 <HowToPlay />
                 <Controls />
                 <Thoughts />
-                <MeetTheTeam />
+                <MeetTheDev />
                 <Footer />
             </div>
         </>

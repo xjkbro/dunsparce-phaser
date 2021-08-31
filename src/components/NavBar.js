@@ -53,8 +53,8 @@ const NavBar = (props) => {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="text-white" href="#team">
-                                The Team
+                            <NavLink className="text-white" href="#dev">
+                                The Dev
                             </NavLink>
                         </NavItem>
                         <NavItem>
