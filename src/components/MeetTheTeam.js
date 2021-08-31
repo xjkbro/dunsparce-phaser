@@ -10,30 +10,10 @@ import {
     Jumbotron,
     Button,
 } from "reactstrap";
+import LinkedInIcon from "@material-ui/icons/LinkedIn";
+import GitHubIcon from "@material-ui/icons/GitHub";
 export default function MeetTheTeam() {
     return (
-        // <div>
-        //     <Card>
-        //         <CardBody>
-        //             <CardTitle tag="h4">Jason-Kyle De Lara</CardTitle>
-        //             <CardSubtitle tag="h6" className="mb-2 text-muted">
-        //                 Full Stack Web Developer
-        //             </CardSubtitle>
-        //         </CardBody>
-        //         <img
-        //             width="100%"
-        //             src="/assets/318x180.svg"
-        //             alt="photo of jason-kyle de lara"
-        //         />
-        //         <CardBody>
-        //             <CardText>
-
-        //             </CardText>
-        //             <CardLink href="#">Card Link</CardLink>
-        //         </CardBody>
-        //     </Card>
-        // </div>
-
         <div className="section" id="team">
             <Jumbotron>
                 <h1 className="display-3 pixel-font">The Team</h1>
@@ -58,15 +38,21 @@ export default function MeetTheTeam() {
                                 </CardSubtitle>
                             </CardBody>
                             <CardBody>
-                                <CardText></CardText>
-                                <CardLink href="#">Card Link</CardLink>
+                                <CardLink href="https://www.linkedin.com/in/jkdelara/">
+                                    <LinkedInIcon />
+                                </CardLink>
+                                <CardLink href="https://www.github.com/xjkbro/">
+                                    <GitHubIcon />
+                                </CardLink>
                             </CardBody>
                         </Card>
                     </div>
                     <div className="info-team">
                         <p className="lead nunito-font">
                             The Team is comprised of just myself, Jason-Kyle De
-                            Lara. I'm a self taught web developer who has
+                            Lara. I'm a creative, outgoing, goal oriented
+                            individual who is always looking for ways to
+                            improve. I'm a self taught web developer who has
                             background in programming since High School. I'm a
                             recent undergraduate from the University of Nevada
                             Las Vegas and earned a Bachelors of Science Degree
@@ -84,19 +70,27 @@ export default function MeetTheTeam() {
                             creative aspect. Thankfully I did because finding a
                             job after college wasn't going to happen with an
                             empty portfolio and no passion for the field. I
-                            gradually becoming more comforatable in my skills
-                            and understanding better practices in web
-                            development that I feel ready to approach employers
-                            to show them what I am made out of. But that wasn't
-                            going to do any good in this industry.
+                            gradually become more comforatable in my skills and
+                            understanding better practices in web development
+                            with all the projects that I've recently completed
+                            that I feel ready to approach employers to show them
+                            what I am made out of!
                         </p>
                         <hr className="my-2 nunito-font" />
                         <p>
-                            It uses utility classes for typography and spacing
-                            to space content out within the larger container.
+                            If your enjoyed the application feel free to visit
+                            my website and look at my other projects.
                         </p>
                         <p className="lead nunito-font">
-                            <Button color="primary">Learn More</Button>
+                            <Button color="primary">
+                                <a
+                                    href="https://www.jkdelara.com"
+                                    className="text-white"
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    Website
+                                </a>
+                            </Button>
                         </p>
                     </div>
                 </div>

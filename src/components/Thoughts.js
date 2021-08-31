@@ -3,7 +3,7 @@ import React from "react";
 export default function Thoughts() {
     return (
         <div className="section" id="thoughts">
-            <h1 className="display-3 pixel-font">Thought</h1>
+            <h1 className="display-3 pixel-font">My Thoughts</h1>
             <p className="lead nunito-font">
                 For my first Phaser project, this was hard. I spent countless
                 hours looking at ways I could use Phaser with other technologies
