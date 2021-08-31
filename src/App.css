@@ -1,38 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap");
+
 .App {
-  text-align: center;
+    /* text-align: center; */
+    background-color: #282c34;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.pixel-font {
+    font-family: "Press Start 2P";
+}
+.nunito-font {
+    font-family: "Nunito";
+}
+.section {
+    margin: auto;
+    width: 80vw;
+    padding-bottom: 12rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+.navbar-toggler {
+    background-color: white !important;
+}
+.game {
+    font-family: "Press Start 2P";
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+.display-img {
+    width: 100%;
+    padding-bottom: 2rem;
+}
+.snapshot {
+    width: 50vw;
+    margin: auto;
+}
+.team-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.card-team {
+    width: 25%;
+}
+.info-team {
+    width: 65%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.line {
+    width: 100%;
+    height: 10px;
+    animation: animateBg 7s linear infinite;
+    background-image: linear-gradient(
+        270deg,
+        #f5f10a 25.28%,
+        #098edb 59.7%,
+        #d7f722
+    );
+    background-size: 1000% 1000%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes animateBg {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
 }

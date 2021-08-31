@@ -1,16 +1,32 @@
 import "./App.css";
 import Game from "./game/game";
+import NavBar from "./components/NavBar";
+import FlappyDunsparce from "./components/FlappyDunsparce";
+import HowToPlay from "./components/HowToPlay";
+import Controls from "./components/Controls";
+import MeetTheTeam from "./components/MeetTheTeam";
+import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
+import Thoughts from "./components/Thoughts";
 
 function App() {
+    const [playGame, setPlayGame] = useState(false);
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>Nav</p>
-                <Game />
-                <p>Content</p>
-            </header>
-        </div>
+        <>
+            <div className="App">
+                <div className="line" />
+                <NavBar />
+                <FlappyDunsparce
+                    playGame={playGame}
+                    setPlayGame={setPlayGame}
+                />
+                <HowToPlay />
+                <Controls />
+                <Thoughts />
+                <MeetTheTeam />
+                <Footer />
+            </div>
+        </>
     );
 }
 

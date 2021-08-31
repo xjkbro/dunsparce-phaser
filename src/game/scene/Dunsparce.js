@@ -48,7 +48,10 @@ export default class Dunsparce extends Phaser.Scene {
         this.load.audio("die", "sounds/die.ogg");
         this.load.audio("score", "sounds/point.ogg");
 
-        this.load.webfont("ElfboyClassic", "fonts/Elfboyclassic-PKZgZ.ttf");
+        this.load.webfont(
+            "Press Start 2P",
+            "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Teko:wght@600;700&display=swap"
+        );
     }
     create() {
         // initialize properties that require values on new creation
@@ -66,9 +69,11 @@ export default class Dunsparce extends Phaser.Scene {
 
         this.pipes = this.initialPipes();
         this.scoreText = this.add.text(20, 20, this.score, {
-            fontFamily: "ElfboyClassic",
-            fontSize: 60,
+            fontFamily: "Cooper",
+            fontSize: 56,
             color: "#fff",
+            stroke: "#000",
+            strokeThickness: 2,
         });
 
         this.createPlayer();
@@ -258,7 +263,6 @@ export default class Dunsparce extends Phaser.Scene {
         console.log(ranbot, rantop);
         return [ranbot, rantop];
     }
-
     collision(player) {
         console.log("sss");
         this.sound.play("hit");
