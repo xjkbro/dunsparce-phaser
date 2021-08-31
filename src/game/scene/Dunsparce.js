@@ -3,16 +3,13 @@ import Phaser from "phaser";
 // CONSTANT VARIABLES
 const gameWidth = 800;
 const gameHeight = 600;
-
 const GROUND = "ground";
 const BACKGROUND = "background";
 const BIRD = "bird";
 const SKY = "sky";
 const FLAP = "flap";
 const GLIDE = "glide";
-
 const FRAME_RATE = 10;
-// const BIRD_GRAVITY = 980;
 const BIRD_VELOCITY = -250;
 const GROUND_VELOCITY = 1.5;
 const SKY_VELOCITY = 0.2;
@@ -22,14 +19,12 @@ const SKY_HEIGHT = 0;
 
 const birdyX = gameWidth / 2;
 const birdyY = gameHeight / 2;
-// const pipeWidth = 52;
-const gap = 150;
-const xGap = 250;
+const pipeGap = 150;
+const deltaX = 250;
 
 export default class Dunsparce extends Phaser.Scene {
     constructor() {
         super("dunsparce");
-        this.score = 0;
     }
 
     preload() {
@@ -48,10 +43,10 @@ export default class Dunsparce extends Phaser.Scene {
         this.load.audio("die", "sounds/die.ogg");
         this.load.audio("score", "sounds/point.ogg");
 
-        this.load.webfont(
-            "Press Start 2P",
-            "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Teko:wght@600;700&display=swap"
-        );
+        // this.load.webfont(
+        //     "PressStart2P",
+        //     "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Teko:wght@600;700&display=swap"
+        // );
     }
     create() {
         // initialize properties that require values on new creation
@@ -59,6 +54,7 @@ export default class Dunsparce extends Phaser.Scene {
         this.countPipe = 0;
         this.isPaused = true;
         this.gameOver = false;
+        this.isFlapping = false;
         this.sound.setVolume(0.1);
 
         // start by placing assets to the canvas and the player
@@ -100,12 +96,35 @@ export default class Dunsparce extends Phaser.Scene {
     }
     update() {
         if (!this.gameOver) {
-            this.flap();
+            this.handleFlaps();
             this.moveGround();
-            if (!this.isPaused) this.infinitePipes();
+            if (!this.isPaused) {
+                this.player.angle += 0.5;
+                this.infinitePipes();
+            }
         } else if (this.cursors.space.isDown) {
             this.scene.restart();
         }
+    }
+
+    handleFlaps() {
+        if (this.isTapped() && !this.isFlapping) {
+            this.isFlapping = true;
+            this.flap();
+        }
+        if (this.isReleased() && this.isFlapping) {
+            this.isFlapping = false;
+        }
+    }
+
+    isTapped() {
+        return (
+            this.cursors.space.isDown || this.input.activePointer.primaryDown
+        );
+    }
+
+    isReleased() {
+        return this.cursors.space.isUp && !this.input.activePointer.primaryDown;
     }
 
     flap() {
@@ -128,8 +147,6 @@ export default class Dunsparce extends Phaser.Scene {
             this.player.setVelocityY(BIRD_VELOCITY);
             this.player.anims.play(FLAP, true);
             this.player.angle = -FLAP_ANGLE;
-        } else if (!this.player.body.touching.down && !this.isPaused) {
-            this.player.angle += 1;
         }
     }
     moveGround() {
@@ -154,12 +171,12 @@ export default class Dunsparce extends Phaser.Scene {
                         let randoPos = this.randomPipes();
                         console.log("Create Pipe Set");
                         this.pipes
-                            .create(gameWidth + xGap, randoPos[0], "pipe")
+                            .create(gameWidth + deltaX, randoPos[0], "pipe")
                             .setScale(1)
                             .refreshBody();
 
                         this.pipes
-                            .create(gameWidth + xGap, randoPos[1], "pipe")
+                            .create(gameWidth + deltaX, randoPos[1], "pipe")
                             .setScale(1, -1) //flips asset upside down
                             .refreshBody();
 
@@ -207,9 +224,9 @@ export default class Dunsparce extends Phaser.Scene {
     }
     initialPipes() {
         let platforms = this.physics.add.staticGroup();
-        var pipePos = gameWidth + 2 * xGap;
+        var pipePos = gameWidth + 2 * deltaX;
         let pos = this.randomPipes();
-        // bottom placable at 260+gap to height
+        // bottom placable at 260+pipeGap to height
         platforms.create(pipePos, pos[0], "pipe").setScale(1).refreshBody();
         platforms.create(pipePos, pos[1], "pipe").setScale(1, -1).refreshBody();
         return platforms;
@@ -255,16 +272,15 @@ export default class Dunsparce extends Phaser.Scene {
     }
     randomPipes() {
         let safePadding = 90;
-        let min = Math.ceil(safePadding + gap / 2);
-        let max = Math.floor(gameHeight - safePadding - gap / 2);
+        let min = Math.ceil(safePadding + pipeGap / 2);
+        let max = Math.floor(gameHeight - safePadding - pipeGap / 2);
         let ran = Math.floor(Math.random() * (max - min + 1)) + min;
-        let rantop = ran - (gap / 2 + 200);
-        let ranbot = ran + (gap / 2 + 200);
+        let rantop = ran - (pipeGap / 2 + 200);
+        let ranbot = ran + (pipeGap / 2 + 200);
         console.log(ranbot, rantop);
         return [ranbot, rantop];
     }
     collision(player) {
-        console.log("sss");
         this.sound.play("hit");
         this.gameIsOver(player);
     }
@@ -274,11 +290,5 @@ export default class Dunsparce extends Phaser.Scene {
         this.gameOver = true;
         console.log("GAMEOVER");
         this.createMessage("gameover");
-    }
-    endGame() {
-        this.gameOver = true;
-        this.physics.pause();
-        console.log("game paused");
-        this.player.y = 450;
     }
 }
