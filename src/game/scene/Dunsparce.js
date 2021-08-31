@@ -11,8 +11,9 @@ const FLAP = "flap";
 const GLIDE = "glide";
 const FRAME_RATE = 10;
 const BIRD_VELOCITY = -250;
-const GROUND_VELOCITY = 1.5;
-const SKY_VELOCITY = 0.2;
+const GROUND_VELOCITY = 2.5;
+const SKY_VELOCITY = 0.6;
+const PIPE_VELOCITY = 4;
 const FLAP_ANGLE = 25;
 const GROUND_HEIGHT = 72;
 const SKY_HEIGHT = 0;
@@ -99,7 +100,7 @@ export default class Dunsparce extends Phaser.Scene {
             this.handleFlaps();
             this.moveGround();
             if (!this.isPaused) {
-                this.player.angle += 0.5;
+                this.player.angle += 1.2;
                 this.infinitePipes();
             }
         } else if (this.cursors.space.isDown) {
@@ -108,23 +109,21 @@ export default class Dunsparce extends Phaser.Scene {
     }
 
     handleFlaps() {
-        if (this.isTapped() && !this.isFlapping) {
+        if (
+            (this.cursors.space.isDown ||
+                this.input.activePointer.primaryDown) &&
+            !this.isFlapping
+        ) {
             this.isFlapping = true;
             this.flap();
         }
-        if (this.isReleased() && this.isFlapping) {
+        if (
+            this.cursors.space.isUp &&
+            !this.input.activePointer.primaryDown &&
+            this.isFlapping
+        ) {
             this.isFlapping = false;
         }
-    }
-
-    isTapped() {
-        return (
-            this.cursors.space.isDown || this.input.activePointer.primaryDown
-        );
-    }
-
-    isReleased() {
-        return this.cursors.space.isUp && !this.input.activePointer.primaryDown;
     }
 
     flap() {
@@ -162,7 +161,7 @@ export default class Dunsparce extends Phaser.Scene {
         children.forEach((child) => {
             if (child instanceof Phaser.GameObjects.Sprite) {
                 child.refreshBody();
-                child.x += -2;
+                child.x += -PIPE_VELOCITY;
                 // when one set of pipe is just shown
                 if (child.x <= gameWidth && !child.drawn) {
                     this.countPipe += 1;
@@ -174,18 +173,15 @@ export default class Dunsparce extends Phaser.Scene {
                             .create(gameWidth + deltaX, randoPos[0], "pipe")
                             .setScale(1)
                             .refreshBody();
-
                         this.pipes
                             .create(gameWidth + deltaX, randoPos[1], "pipe")
                             .setScale(1, -1) //flips asset upside down
                             .refreshBody();
-
                         this.countPipe = 0;
                     }
                 }
                 // checks if this child is out of canvas and destroys if it is
                 if (child.x <= -50) {
-                    console.log("Destroyed one " + this.countPipe);
                     child.destroy();
                 }
                 //checks if child has crossed birds position, if so add 1 to score
@@ -199,7 +195,6 @@ export default class Dunsparce extends Phaser.Scene {
                     child.scored = true;
                     this.score += 0.5;
                     this.scoreText.setText(this.score);
-                    console.log("score:", this.score);
                     this.sound.play("score");
                 }
             }

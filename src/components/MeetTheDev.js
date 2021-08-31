@@ -74,10 +74,10 @@ export default function MeetTheDev() {
                             creative aspect. Thankfully I did because finding a
                             job after college wasn't going to happen with an
                             empty portfolio and no passion for the field. I
-                            gradually become more comforatable in my skills and
-                            understanding better practices in web development
-                            with all the projects that I've recently completed
-                            that I feel ready to approach employers to show them
+                            gradually became more comforatable in my skills and
+                            understanding better practices in web development.
+                            With all the projects that I've recently completed,
+                            I feel ready to approach employers and show them
                             what I am made out of!
                         </p>
                         <hr className="my-2 nunito-font" />
